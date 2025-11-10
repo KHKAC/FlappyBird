@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BirdControl : MonoBehaviour
@@ -21,5 +22,10 @@ public class BirdControl : MonoBehaviour
     void FixedUpdate()
     {
         transform.rotation = Quaternion.Euler(0, 0, rb.velocity.y * rotateSpeed);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameManager.Instance.GameOver();
     }
 }
