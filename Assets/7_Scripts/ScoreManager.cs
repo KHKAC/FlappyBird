@@ -14,13 +14,9 @@ public class ScoreManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-    void Update()
+    public void UpdateScore(int val)
     {
+        score += val;
         scoreTxt.text = score.ToString();
-    }
-
-    public void UpdateScore()
-    {
-        score++;
     }
 }

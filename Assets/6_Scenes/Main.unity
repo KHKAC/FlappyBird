@@ -579,7 +579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cad48df67f252342bd26dcb19772fda, type: 2}
   m_sharedMaterial: {fileID: 1416126625804854099, guid: 7cad48df67f252342bd26dcb19772fda, type: 2}
@@ -1122,6 +1122,7 @@ MonoBehaviour:
   maxTime: 2.3
   heightRange: 2
   pipePrefab: {fileID: 5938907731948757040, guid: 89eaf622e4724a643aff46788540bbd0, type: 3}
+  redPipePrefab: {fileID: 5938907731948757040, guid: 138d14330785d584fb75403a948b0758, type: 3}
 --- !u!1 &1793098272
 GameObject:
   m_ObjectHideFlags: 0
