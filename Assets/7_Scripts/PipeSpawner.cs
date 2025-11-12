@@ -13,6 +13,8 @@ public class PipeSpawner : MonoBehaviour
 
     void Update()
     {
+        // 게임 상태가 PLAY일 때만 pipe 생성
+        if(GameManager.Instance.GameState != GameManager.State.PLAY) return;
         timer += Time.deltaTime;
         if(timer >= maxTime)
         {
