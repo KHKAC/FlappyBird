@@ -5,11 +5,20 @@ using UnityEngine;
 public class MovePipe : MonoBehaviour
 {
     [SerializeField] float speed = 0.65f;
+    [SerializeField] BoxCollider2D upPipe; // 위 파이프
+    [SerializeField] BoxCollider2D downPipe;// 아래 파이프
 
     void Update()
     {
         // 게임 상태가 PLAY일 때만 움직이도록
         if(GameManager.Instance.GameState == GameManager.State.PLAY)
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
+        else if(GameManager.Instance.GameState == GameManager.State.GAMEOVER)
+        {
+            // 게임오버 상태에서는 파이프의 충돌이 안 일어나게
+            upPipe.enabled = downPipe.enabled = false;
+        }
     }
 }

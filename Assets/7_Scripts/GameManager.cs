@@ -20,7 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite[] bgSprite;
     [SerializeField] Animator floorAnim;
     [SerializeField] BirdControl bird;
+    [SerializeField] AudioClip acReady;
+    [SerializeField] AudioClip acHit;
     [SerializeField] GameObject restartBtn;
+    new AudioSource audio;
     State gameState;    // 게임 상태를 저장할 함수
     public State GameState => gameState;
 
@@ -32,9 +35,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         GameTitle();
         Time.timeScale = 1.0f;
     }
+
+    // 파라미터로 넘어온 clip을 한번 플레이시킨다.
+    public void PlayAudio(AudioClip clip) => audio.PlayOneShot(clip);
 
     void ChangeState(State value)
     {
@@ -58,6 +65,8 @@ public class GameManager : MonoBehaviour
         ChangeState(State.READY);
         // 새 뒤로 이동
         bird.BirdReady();
+        // Ready 소리 재생
+        PlayAudio(acReady);
     }
 
     public void GamePlay()
@@ -69,6 +78,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         ChangeState(State.GAMEOVER);
+        PlayAudio(acHit);
         // 게임 시간을 멈춘다.
         // Time.timeScale = 0f;
         floorAnim.enabled = false;
