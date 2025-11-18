@@ -46,6 +46,7 @@ public class BirdControl : MonoBehaviour
     }
     void FixedUpdate()
     {
+        // 위로 이동시키는 것
         transform.rotation = Quaternion.Euler(0, 0, rb.velocity.y * rotateSpeed);
     }
 

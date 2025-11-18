@@ -81,7 +81,10 @@ public class GameManager : MonoBehaviour
         PlayAudio(acHit);
         // 게임 시간을 멈춘다.
         // Time.timeScale = 0f;
+        // 바닥 애니메이션을 멈춘다.
         floorAnim.enabled = false;
+        // BestScore를 체크한다.
+        ScoreManager.Instance.CheckBestScore();
         // restart 버튼은 일단 꺼둔다
         restartBtn.SetActive(false);
         // 코루틴을 이용해서 잠시 시간을 지연시킨다.
@@ -96,7 +99,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StopTimer()
     {
         // 2초 후 다음 로직 실행
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         // 시간을 멈춘다.
         Time.timeScale = 0f;
         // 재시작 버튼 활성화

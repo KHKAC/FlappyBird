@@ -9,6 +9,7 @@ public class GameOverCanvas : MonoBehaviour
     [SerializeField] Image medal;
     [SerializeField] TMP_Text scoreResultTxt;
     [SerializeField] TMP_Text bestScoreTxt;
+    [SerializeField] GameObject newMark;
     [SerializeField] Sprite[] medalSprites;
     [SerializeField] Sprite nonMedalSprite;
     
@@ -25,7 +26,10 @@ public class GameOverCanvas : MonoBehaviour
             // 메달 이미지 자체를 표시하지 않음.
             medal.sprite = nonMedalSprite;
         }
+        // 1등일 때만 new 표시
+        newMark.SetActive(ScoreManager.Instance.Rank == 0);
         scoreResultTxt.text = ScoreManager.Instance.Score.ToString();
         // bestScoreTxt는 최고 스코어 값을 보여준다.
+        bestScoreTxt.text = PlayerPrefs.GetInt("RANKSCORE0", 0).ToString();
     }
 }
